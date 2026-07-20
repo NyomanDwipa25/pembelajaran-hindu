@@ -79,7 +79,7 @@
                             <strong class="d-block">{{ basename($assignment->file) }}</strong>
                             <small class="text-muted">Klik untuk mengunduh</small>
                         </div>
-                        <a href="{{ route('files.download', $assignment->file) }}" class="btn btn-primary">
+                        <a href="{{ route('files.download', [explode('/', $assignment->file)[0], basename($assignment->file)]) }}" class="btn btn-primary">
                             <i class="bi bi-download me-1"></i> Unduh
                         </a>
                     </div>
@@ -121,7 +121,7 @@
                         <h6 class="fw-bold mb-2">Jawaban Anda:</h6>
                         <p class="mb-2">{{ $userSubmission->jawaban }}</p>
                         @if($userSubmission->file)
-                            <a href="{{ route('files.download', $userSubmission->file) }}" class="btn btn-sm btn-primary mt-2">
+                            <a href="{{ route('files.download', [explode('/', $userSubmission->file)[0], basename($userSubmission->file)]) }}" class="btn btn-sm btn-primary mt-2">
                                 <i class="bi bi-download me-1"></i> Lihat File yang Dikumpulkan
                             </a>
                         @endif
@@ -235,7 +235,7 @@
                     <div class="mb-3">
                         <strong>File:</strong>
                         <div class="mt-2">
-                            <a href="{{ route('files.download', $submission->file) }}" class="btn btn-sm btn-info">
+                            <a href="{{ route('files.download', [explode('/', $submission->file)[0], basename($submission->file)]) }}" class="btn btn-sm btn-info">
                                 <i class="bi bi-download me-1"></i> Unduh File
                             </a>
                         </div>

@@ -12,8 +12,8 @@ use App\Http\Controllers\FileDownloadController;
 
 // File download (public route, authenticated)
 Route::middleware('auth')->group(function () {
-    Route::get('/files/download/{path}', [FileDownloadController::class, 'download'])
-        ->name('files.download')->where('path', '.*');
+    Route::get('/files/download/{type}/{filename}', [FileDownloadController::class, 'download'])
+        ->name('files.download')->whereIn('type', ['lessons', 'assignments', 'submissions']);
 });
 
 // Guest routes
