@@ -3,21 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FileDownloadController extends Controller
 {
     public function download($path)
     {
-        $fullPath = storage_path('app/public/' . $path);
+        $disk = Storage::disk('public');
 
-        if (!file_exists($fullPath)) {
+        if (!$disk->exists($path)) {
             abort(404, 'File tidak ditemukan.');
         }
 
+        $fullPath = $disk->path($path);
         $filename = basename($path);
 
-        return response()->download($fullPath, $filename, [
+        return response()->streamDownload(function () use ($fullPath) {
+            readfile($fullPath);
+        }, $filename, [
             'Content-Type' => 'application/octet-stream',
+            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
         ]);
     }
 }
