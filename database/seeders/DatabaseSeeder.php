@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        if (User::count() > 0) return;
+
         // Create Guru
         $guru1 = User::create([
             'name' => 'Ibu Ketut Sari',
