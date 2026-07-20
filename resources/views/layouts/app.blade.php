@@ -314,26 +314,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function forceDownload(event, url, filename) {
-            event.preventDefault();
-            fetch(url, { credentials: 'same-origin' })
-                .then(function(res) {
-                    if (!res.ok) throw new Error('Gagal mengunduh');
-                    return res.blob();
-                })
-                .then(function(blob) {
-                    var a = document.createElement('a');
-                    a.href = URL.createObjectURL(blob);
-                    a.download = filename;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(a.href);
-                })
-                .catch(function(err) { alert('Error: ' + err.message); });
-        }
-    </script>
     @stack('scripts')
 </body>
 </html>

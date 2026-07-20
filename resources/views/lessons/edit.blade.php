@@ -85,7 +85,7 @@
                         <label class="form-label fw-semibold">File Saat Ini</label>
                         <div class="alert alert-info">
                             <i class="bi bi-file-earmark-text me-2"></i>
-                            <a href="{{ route('files.download', $lesson->file) }}" onclick="forceDownload(event, '{{ route('files.download', $lesson->file) }}', '{{ basename($lesson->file) }}')" class="text-decoration-none">
+                            <a href="{{ route('files.download', $lesson->file) }}" class="text-decoration-none">
                                 {{ basename($lesson->file) }}
                             </a>
                         </div>

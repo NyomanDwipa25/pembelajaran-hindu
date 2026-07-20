@@ -76,7 +76,7 @@
                             <strong class="d-block">{{ basename($lesson->file) }}</strong>
                             <small class="text-muted">Klik untuk mengunduh</small>
                         </div>
-                        <a href="{{ route('files.download', $lesson->file) }}" onclick="forceDownload(event, '{{ route('files.download', $lesson->file) }}', '{{ basename($lesson->file) }}')" class="btn btn-primary">
+                        <a href="{{ route('files.download', $lesson->file) }}" class="btn btn-primary">
                             <i class="bi bi-download me-1"></i> Unduh
                         </a>
                     </div>
