@@ -15,14 +15,8 @@ class FileDownloadController extends Controller
             abort(404, 'File tidak ditemukan.');
         }
 
-        $fullPath = $disk->path($path);
-        $filename = basename($path);
-
-        return response()->streamDownload(function () use ($fullPath) {
-            readfile($fullPath);
-        }, $filename, [
+        return $disk->download($path, basename($path), [
             'Content-Type' => 'application/octet-stream',
-            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
         ]);
     }
 }
