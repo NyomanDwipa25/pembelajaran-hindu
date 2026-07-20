@@ -210,6 +210,79 @@
                 position: relative;
                 min-height: auto;
             }
+            
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            
+            .main-content {
+                padding: 15px;
+            }
+            
+            .card {
+                margin-bottom: 15px;
+            }
+            
+            .card-header {
+                padding: 15px;
+                font-size: 0.95rem;
+            }
+            
+            .btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .table {
+                font-size: 0.85rem;
+            }
+            
+            .stat-card {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .stat-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h4 {
+                font-size: 1.1rem;
+            }
+            
+            .modal-dialog {
+                margin: 10px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            
+            .main-content {
+                padding: 10px;
+            }
+            
+            .badge {
+                font-size: 0.75rem;
+                padding: 5px 10px;
+            }
+            
+            .d-flex.gap-2 {
+                flex-direction: column;
+                gap: 10px !important;
+            }
+            
+            .d-flex.gap-2 .btn {
+                width: 100%;
+            }
         }
     </style>
     @stack('styles')
