@@ -1,0 +1,248 @@
+╔══════════════════════════════════════════════════════════════════╗
+║                                                                  ║
+║     ❌ FIX ERROR: PHP VERSION 8.1 → BUTUH 8.3+ ❌              ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
+
+ERROR YANG TERJADI:
+-------------------
+"Your Composer dependencies require a PHP version ">= 8.3.0". 
+You are running 8.1.10."
+
+ARTINYA:
+--------
+Laravel 11 butuh PHP 8.3 atau lebih tinggi.
+Saat ini Anda pakai PHP 8.1.10.
+
+══════════════════════════════════════════════════════════════════
+
+✅ SOLUSI: GANTI VERSI PHP DI LARAGON
+
+╔══════════════════════════════════════════════════════════════════╗
+║  CARA 1: GANTI PHP VIA LARAGON MENU (PALING MUDAH) ⭐           ║
+╚══════════════════════════════════════════════════════════════════╝
+
+STEP 1: Cek PHP yang Tersedia
+-------------------------------
+1. Klik kanan icon Laragon di taskbar
+2. Pilih: PHP > Version
+3. Lihat daftar versi PHP yang tersedia
+
+   Contoh:
+   ┌────────────────┐
+   │ ◉ php-8.1.10   │ ← Yang aktif sekarang
+   │ ○ php-8.2.0    │
+   │ ○ php-8.3.32   │ ← Pilih ini (8.3+)
+   └────────────────┘
+
+4. Klik pada versi PHP 8.3 atau lebih tinggi
+5. Tunggu 5 detik (Laragon akan restart otomatis)
+
+STEP 2: Verifikasi
+-------------------
+Buka CMD dan ketik:
+
+   php -v
+
+Output yang diharapkan:
+   PHP 8.3.32 (atau lebih tinggi)
+
+STEP 3: Coba Lagi
+------------------
+   cd E:\app\Coding\laragon\www\pembelajaran-hindu
+   php artisan migrate:fresh --seed
+
+✅ Seharusnya berhasil sekarang!
+
+══════════════════════════════════════════════════════════════════
+
+╔══════════════════════════════════════════════════════════════════╗
+║  CARA 2: JIKA PHP 8.3 BELUM ADA DI LARAGON                      ║
+╚══════════════════════════════════════════════════════════════════╝
+
+OPSI A: Download PHP 8.3 Manual
+---------------------------------
+
+1. Download PHP 8.3:
+   https://windows.php.net/download/
+   
+   Pilih: PHP 8.3.x (NTS x64 Thread Safe)
+   
+2. Extract ke folder Laragon:
+   C:\laragon\bin\php\php-8.3.32\
+   
+3. Klik kanan Laragon > PHP > Version > php-8.3.32
+
+4. Restart Laragon
+
+OPSI B: Update Laragon (Recommended)
+--------------------------------------
+
+1. Download Laragon versi terbaru dari:
+   https://laragon.org/download/
+   
+2. Install (akan update PHP otomatis)
+
+3. Setelah install, Laragon akan punya PHP 8.3
+
+══════════════════════════════════════════════════════════════════
+
+╔══════════════════════════════════════════════════════════════════╗
+║  CARA 3: DOWNGRADE LARAVEL (TIDAK RECOMMENDED)                  ║
+╚══════════════════════════════════════════════════════════════════╝
+
+Jika tidak bisa upgrade PHP, downgrade Laravel ke versi 10:
+
+PERINGATAN: 
+- Ini akan mengubah struktur project
+- Beberapa fitur Laravel 11 tidak akan tersedia
+
+Langkah:
+1. Buka file: composer.json
+2. Ubah baris:
+   "laravel/framework": "^13.20.0"
+   Jadi:
+   "laravel/framework": "^10.0"
+   
+3. Jalankan:
+   composer update
+   
+4. Coba lagi:
+   php artisan migrate:fresh --seed
+
+⚠️ TIDAK RECOMMENDED! Lebih baik upgrade PHP!
+
+══════════════════════════════════════════════════════════════════
+
+🎯 RECOMMENDED SOLUTION (PILIH INI):
+
+┌──────────────────────────────────────────────────────────────┐
+│  GANTI KE PHP 8.3 VIA LARAGON                                │
+└──────────────────────────────────────────────────────────────┘
+
+1. Klik kanan Laragon > PHP > Version
+2. Pilih PHP 8.3.x (jika ada)
+3. Jika tidak ada, download & install Laragon terbaru
+4. Verifikasi: php -v
+5. Run: php artisan migrate:fresh --seed
+
+══════════════════════════════════════════════════════════════════
+
+✅ CHECKLIST SETELAH GANTI PHP:
+
+☐ PHP version sudah 8.3+ (cek: php -v)
+☐ Laragon sudah restart
+☐ Extension pdo_mysql sudah enabled di php.ini VERSI BARU
+☐ Database pembelajaran_hindu sudah dibuat
+☐ Ready untuk migration
+
+══════════════════════════════════════════════════════════════════
+
+⚠️ CATATAN PENTING:
+
+Setiap versi PHP punya php.ini sendiri!
+
+Jika ganti dari PHP 8.1 ke 8.3, Anda harus:
+1. Enable extension di php.ini PHP 8.3
+   (Bukan di php.ini PHP 8.1)
+   
+Lokasi:
+- PHP 8.1: C:\laragon\bin\php\php-8.1.10\php.ini
+- PHP 8.3: C:\laragon\bin\php\php-8.3.32\php.ini
+
+Jadi setelah ganti PHP 8.3:
+1. Edit php.ini PHP 8.3
+2. Enable extension=pdo_mysql
+3. Enable extension=mysqli
+4. Save & restart Laragon
+
+══════════════════════════════════════════════════════════════════
+
+🔍 CEK VERSI PHP YANG AKTIF:
+
+Buka CMD:
+
+┌──────────────────────────────────────────────────────────────┐
+│ C:\> php -v                                                  │
+│                                                              │
+│ Output yang BENAR:                                           │
+│ PHP 8.3.32 (cli) (built: Jul 1 2026 09:40:05) (ZTS ...)    │
+│                                                              │
+│ Output yang SALAH:                                           │
+│ PHP 8.1.10 (cli) ...                                        │
+│                                                              │
+│ Jika masih 8.1 → Ulangi ganti PHP                          │
+└──────────────────────────────────────────────────────────────┘
+
+══════════════════════════════════════════════════════════════════
+
+📋 RINGKASAN MASALAH & SOLUSI:
+
+MASALAH:
+✗ Laravel 11 butuh PHP 8.3+
+✗ Anda pakai PHP 8.1.10
+
+SOLUSI:
+✓ Ganti ke PHP 8.3 via Laragon
+✓ Enable extension pdo_mysql di php.ini PHP 8.3
+✓ Restart Laragon
+✓ Run migration
+
+══════════════════════════════════════════════════════════════════
+
+🎯 LANGKAH LENGKAP (DARI AWAL):
+
+1. Ganti PHP ke 8.3:
+   Laragon > PHP > Version > php-8.3.x
+
+2. Verifikasi:
+   php -v (harus 8.3+)
+
+3. Enable MySQL di php.ini PHP 8.3:
+   - Laragon > PHP > php.ini
+   - Hapus ; di extension=pdo_mysql
+   - Hapus ; di extension=mysqli
+   - Save
+
+4. Restart Laragon:
+   Stop All > Start All
+
+5. Buat database:
+   pembelajaran_hindu
+
+6. Run migration:
+   cd E:\app\Coding\laragon\www\pembelajaran-hindu
+   php artisan migrate:fresh --seed
+
+7. Run aplikasi:
+   php artisan serve
+
+8. Buka browser:
+   http://localhost:8000
+
+══════════════════════════════════════════════════════════════════
+
+💡 TIPS:
+
+• Laragon versi terbaru biasanya sudah include PHP 8.3
+• Jika Laragon lama, update ke versi terbaru
+• Download dari: https://laragon.org/download/
+• Setelah update, PHP 8.3 akan tersedia
+
+══════════════════════════════════════════════════════════════════
+
+📞 JIKA MASIH ERROR SETELAH GANTI PHP:
+
+Pastikan:
+✓ php -v menunjukkan 8.3+
+✓ php.ini yang diedit adalah PHP 8.3 (bukan 8.1)
+✓ Extension pdo_mysql enabled
+✓ Laragon sudah restart
+✓ MySQL running
+
+══════════════════════════════════════════════════════════════════
+
+Semoga berhasil! 🙏
+Om Swastiastu 🕉️
+
+══════════════════════════════════════════════════════════════════

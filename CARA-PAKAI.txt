@@ -1,0 +1,110 @@
+╔══════════════════════════════════════════════════════════════════╗
+║                                                                  ║
+║     🎉 APLIKASI SUDAH SIAP! CARA MENGGUNAKAN (SUPER MUDAH) 🎉   ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
+
+📍 Lokasi: E:\app\Coding\laragon\www\pembelajaran-hindu
+
+══════════════════════════════════════════════════════════════════
+
+⚡ LANGKAH SUPER CEPAT (3 LANGKAH):
+
+1️⃣ PASTIKAN MYSQL LARAGON RUNNING
+   → Buka Laragon
+   → Pastikan MySQL icon berwarna HIJAU
+   → Jika merah, klik Start
+
+2️⃣ JALANKAN APLIKASI
+   → Double click file: START-SERVER.bat
+   → Tunggu 5 detik
+   → Jangan tutup window yang muncul
+
+3️⃣ BUKA BROWSER
+   → Ketik: http://localhost:8000
+   → Login dengan:
+     Email: guru@hindu.com
+     Password: password
+
+SELESAI! 🎊
+
+══════════════════════════════════════════════════════════════════
+
+🔑 SEMUA AKUN LOGIN:
+
+GURU:
+-----
+1. guru@hindu.com / password
+2. made@hindu.com / password
+
+SISWA:
+------
+1. ayu@siswa.com / password (4 SD)
+2. wayan@siswa.com / password (5 SD)
+3. dewi@siswa.com / password (6 SD)
+4. adi@siswa.com / password (7 SMP)
+5. purnama@siswa.com / password (8 SMP)
+
+══════════════════════════════════════════════════════════════════
+
+📁 FILE PENTING:
+
+✅ START-SERVER.bat
+   → DOUBLE CLICK INI untuk jalankan aplikasi
+
+✅ RUN-MIGRATION.bat
+   → Double click untuk reset database
+   → Hati-hati! Akan hapus semua data
+
+✅ APLIKASI-SIAP-DIGUNAKAN.txt
+   → Panduan lengkap & penjelasan semua fitur
+
+══════════════════════════════════════════════════════════════════
+
+⚠️ JIKA APLIKASI TIDAK MUNCUL:
+
+1. Pastikan MySQL Laragon running (hijau)
+2. Pastikan tidak ada aplikasi lain di port 8000
+3. Coba restart:
+   - Tutup window CMD (Ctrl+C)
+   - Double click START-SERVER.bat lagi
+
+══════════════════════════════════════════════════════════════════
+
+✨ FITUR YANG BISA ANDA COBA:
+
+SEBAGAI GURU:
+-------------
+✓ Lihat dashboard dengan statistik
+✓ Tambah pembelajaran baru (+ upload file PDF)
+✓ Buat tugas baru dengan deadline
+✓ Lihat pengumpulan tugas siswa
+✓ Beri nilai dan feedback
+✓ Lihat absensi siswa hari ini
+✓ Download laporan absensi
+
+SEBAGAI SISWA:
+--------------
+✓ Lihat dashboard dengan pembelajaran terbaru
+✓ Absen hari ini
+✓ Baca materi pembelajaran
+✓ Kerjakan dan kumpulkan tugas
+✓ Lihat nilai dan feedback dari guru
+✓ Lihat riwayat absensi
+
+══════════════════════════════════════════════════════════════════
+
+💡 TIPS:
+
+• Window CMD yang muncul = Server running
+• JANGAN tutup window CMD saat menggunakan aplikasi
+• Untuk stop: Tekan Ctrl+C atau tutup window
+• Setiap kali mau pakai, double click START-SERVER.bat
+
+══════════════════════════════════════════════════════════════════
+
+🎊 SELAMAT MENGGUNAKAN!
+
+Om Swastiastu 🕉️
+
+══════════════════════════════════════════════════════════════════

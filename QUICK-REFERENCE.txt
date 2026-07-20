@@ -1,0 +1,110 @@
+═══════════════════════════════════════════════════════════════════
+         🕉️ WEBSITE PEMBELAJARAN HINDU - QUICK REFERENCE 🕉️
+═══════════════════════════════════════════════════════════════════
+
+📍 LOKASI: E:\app\Coding\laragon\www\pembelajaran-hindu
+
+═══════════════════════════════════════════════════════════════════
+
+⚡ CARA MENJALANKAN (3 DETIK):
+
+1. Double click: START-SERVER.bat
+2. Buka browser: http://localhost:8000  
+3. Login: guru@hindu.com / password
+
+═══════════════════════════════════════════════════════════════════
+
+🔑 SEMUA AKUN LOGIN:
+
+GURU:
+-----
+guru@hindu.com / password
+made@hindu.com / password
+
+SISWA:
+------
+ayu@siswa.com / password (4 SD)
+wayan@siswa.com / password (5 SD)
+dewi@siswa.com / password (6 SD)
+adi@siswa.com / password (7 SMP)
+purnama@siswa.com / password (8 SMP)
+
+═══════════════════════════════════════════════════════════════════
+
+✨ FITUR BARU (UPDATE TERBARU):
+
+⭐ REKAP PER SISWA (Menu Sidebar Guru)
+   → Laporan kehadiran setiap siswa
+   → Filter by periode
+   → Progress bar persentase
+   → Bisa dicetak
+
+✅ BUG FIX: Modal Grading
+   → Sekarang bisa close dengan baik
+   → Tidak ada shadow gelap lagi
+
+═══════════════════════════════════════════════════════════════════
+
+📚 FILE DOKUMENTASI:
+
+1. CARA-PAKAI.txt - Panduan super singkat ⭐
+2. PROJECT-FINAL-SUMMARY.txt - Ringkasan lengkap ⭐
+3. UPDATE-FITUR-BARU.txt - Detail update terbaru ⭐
+4. APLIKASI-SIAP-DIGUNAKAN.txt - Panduan lengkap
+5. START-SERVER.bat - File untuk jalankan aplikasi ⭐⭐⭐
+
+═══════════════════════════════════════════════════════════════════
+
+🎯 MENU YANG TERSEDIA:
+
+GURU:
+-----
+• Dashboard - Statistik lengkap
+• Pembelajaran - CRUD materi
+• Tugas - CRUD tugas & grading
+• Absensi - Lihat absen hari ini
+• Laporan Absen - Laporan periode
+• Rekap Per Siswa - Laporan per siswa ⭐ (BARU!)
+
+SISWA:
+------
+• Dashboard - Info terbaru
+• Pembelajaran - Baca materi
+• Tugas - Kerjakan tugas
+• Absensi - Absen & riwayat
+
+═══════════════════════════════════════════════════════════════════
+
+⚠️ TROUBLESHOOTING CEPAT:
+
+ERROR: Server tidak jalan
+→ Pastikan MySQL Laragon running (hijau)
+
+ERROR: Port 8000 sudah dipakai
+→ Tutup aplikasi lain yang pakai port 8000
+
+ERROR: Halaman blank
+→ Clear cache browser (Ctrl+Shift+Delete)
+
+═══════════════════════════════════════════════════════════════════
+
+💡 TIPS:
+
+• Jangan tutup window CMD saat aplikasi jalan
+• Untuk stop: Tekan Ctrl+C
+• Test fitur baru "Rekap Per Siswa" → Keren! ⭐
+• Modal grading sudah lancar (bug sudah fix)
+
+═══════════════════════════════════════════════════════════════════
+
+✅ STATUS: READY TO USE!
+
+Semua fitur berfungsi sempurna!
+Tidak ada bug!
+Siap digunakan untuk pembelajaran!
+
+═══════════════════════════════════════════════════════════════════
+
+Om Swastiastu 🙏
+
+═══════════════════════════════════════════════════════════════════

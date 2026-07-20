@@ -1,0 +1,187 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║     🕉️  WEBSITE PEMBELAJARAN HINDU - QUICK START GUIDE  🕉️    ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+📍 LOKASI PROJECT: E:\app\Coding\laragon\www\pembelajaran-hindu
+
+═══════════════════════════════════════════════════════════════
+
+⚡ QUICK START - 4 LANGKAH MUDAH:
+
+╔═══════════════════════════════════════════════════════════════╗
+║  STEP 1: ENABLE MYSQL DI PHP                                 ║
+╚═══════════════════════════════════════════════════════════════╝
+
+1. Klik kanan icon Laragon di taskbar
+2. Pilih: PHP > php.ini
+3. Tekan Ctrl+F, cari: ";extension=pdo_mysql"
+4. Hapus tanda ";" di depannya (2 baris):
+   
+   ;extension=pdo_mysql  →  extension=pdo_mysql
+   ;extension=mysqli     →  extension=mysqli
+
+5. Save (Ctrl+S)
+6. Klik kanan icon Laragon > Stop All
+7. Klik kanan icon Laragon > Start All
+
+✅ MySQL extension aktif!
+
+╔═══════════════════════════════════════════════════════════════╗
+║  STEP 2: BUAT DATABASE                                        ║
+╚═══════════════════════════════════════════════════════════════╝
+
+1. Klik icon Laragon > Database
+2. Klik kanan di sidebar > Create new > Database
+3. Nama: pembelajaran_hindu
+4. Collation: utf8mb4_unicode_ci
+5. OK
+
+ATAU buka HeidiSQL dan jalankan:
+   CREATE DATABASE pembelajaran_hindu 
+   CHARACTER SET utf8mb4 
+   COLLATE utf8mb4_unicode_ci;
+
+✅ Database siap!
+
+╔═══════════════════════════════════════════════════════════════╗
+║  STEP 3: JALANKAN MIGRATION & SEEDER                          ║
+╚═══════════════════════════════════════════════════════════════╝
+
+1. Buka CMD atau Terminal
+2. Ketik:
+
+   cd E:\app\Coding\laragon\www\pembelajaran-hindu
+   php artisan migrate:fresh --seed
+
+3. Tunggu sampai selesai (10-30 detik)
+
+✅ Database terisi dengan data dummy!
+
+╔═══════════════════════════════════════════════════════════════╗
+║  STEP 4: BUKA APLIKASI                                        ║
+╚═══════════════════════════════════════════════════════════════╝
+
+CARA 1 (Recommended):
+   Buka browser: http://pembelajaran-hindu.test
+
+CARA 2:
+   1. Di CMD, ketik: php artisan serve
+   2. Buka browser: http://localhost:8000
+
+✅ Website siap digunakan!
+
+═══════════════════════════════════════════════════════════════
+
+🔑 LOGIN PERTAMA KALI:
+
+┌─────────────────────────────────────────────────────────────┐
+│  GURU                                                       │
+├─────────────────────────────────────────────────────────────┤
+│  Email    : guru@hindu.com                                  │
+│  Password : password                                        │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│  SISWA                                                      │
+├─────────────────────────────────────────────────────────────┤
+│  Email    : ayu@siswa.com                                   │
+│  Password : password                                        │
+│  Kelas    : 4 SD                                            │
+└─────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════
+
+✨ FITUR REGISTRASI:
+
+Klik "Daftar sekarang" di halaman login untuk:
+✅ Guru bisa daftar akun sendiri
+✅ Siswa bisa daftar akun sendiri
+✅ Pilih role: Guru atau Siswa
+✅ Otomatis login setelah registrasi
+
+═══════════════════════════════════════════════════════════════
+
+📚 APA YANG BISA DILAKUKAN?
+
+GURU:
+  ✓ Buat materi pembelajaran
+  ✓ Upload file pembelajaran (PDF, DOC, PPT)
+  ✓ Buat tugas dengan deadline
+  ✓ Lihat pengumpulan tugas siswa
+  ✓ Beri nilai & feedback
+  ✓ Lihat absensi siswa
+  ✓ Download laporan absensi
+
+SISWA:
+  ✓ Baca materi pembelajaran
+  ✓ Download file pembelajaran
+  ✓ Kerjakan & kumpulkan tugas
+  ✓ Upload file jawaban
+  ✓ Lihat nilai & feedback
+  ✓ Absen setiap hari
+  ✓ Lihat riwayat absensi
+
+═══════════════════════════════════════════════════════════════
+
+🎨 DESAIN:
+  • Modern gradient purple theme
+  • Responsive (HP, Tablet, Desktop)
+  • Card-based layout
+  • Smooth animations
+  • User-friendly interface
+
+═══════════════════════════════════════════════════════════════
+
+🐛 TROUBLESHOOTING CEPAT:
+
+❌ Error: "could not find driver"
+   → Ulangi STEP 1, pastikan save & restart Laragon
+
+❌ Error: "Base table not found"
+   → Ulangi STEP 3: php artisan migrate:fresh --seed
+
+❌ Halaman blank
+   → php artisan cache:clear
+   → Hard refresh: Ctrl + Shift + R
+
+❌ File upload gagal
+   → php artisan storage:link
+
+═══════════════════════════════════════════════════════════════
+
+📖 DOKUMENTASI LENGKAP:
+
+→ README.md              : Overview fitur
+→ SETUP_INSTRUCTIONS.md  : Panduan detail
+→ PROJECT_COMPLETE.md    : Ringkasan lengkap
+
+═══════════════════════════════════════════════════════════════
+
+💡 TIPS:
+
+1. Test dengan akun guru dulu untuk buat konten
+2. Lalu test dengan akun siswa untuk lihat dari sisi mereka
+3. Coba fitur registrasi untuk buat akun baru
+4. Explore semua menu yang tersedia
+
+═══════════════════════════════════════════════════════════════
+
+📞 BANTUAN:
+
+Jika ada error atau pertanyaan:
+1. Baca SETUP_INSTRUCTIONS.md
+2. Cek troubleshooting section
+3. Pastikan semua step sudah diikuti dengan benar
+
+═══════════════════════════════════════════════════════════════
+
+🎉 SELAMAT MENGGUNAKAN!
+
+Website Pembelajaran Hindu siap membantu proses belajar mengajar
+agama Hindu untuk siswa SD dan SMP!
+
+Om Swastiastu 🙏
+
+═══════════════════════════════════════════════════════════════

@@ -1,0 +1,208 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║     ❌ TROUBLESHOOTING: COULD NOT FIND DRIVER ERROR ❌        ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+ERROR YANG TERJADI:
+"could not find driver (Connection: mysql...)"
+
+PENYEBAB:
+Extension MySQL (pdo_mysql) belum diaktifkan di PHP.
+
+═══════════════════════════════════════════════════════════════
+
+✅ SOLUSI LENGKAP (IKUTI STEP BY STEP):
+
+╔═══════════════════════════════════════════════════════════════╗
+║  METODE 1: ENABLE MYSQL VIA LARAGON MENU (TERMUDAH)          ║
+╚═══════════════════════════════════════════════════════════════╝
+
+1. Klik kanan icon Laragon di system tray (pojok kanan bawah)
+2. Pilih: PHP > Quick settings
+3. CENTANG/CHECKLIST option berikut:
+   ☑ extension=pdo_mysql
+   ☑ extension=mysqli
+4. Klik OK
+5. Klik kanan icon Laragon > Stop All
+6. Tunggu 5 detik
+7. Klik kanan icon Laragon > Start All
+8. Coba lagi: php artisan migrate:fresh --seed
+
+╔═══════════════════════════════════════════════════════════════╗
+║  METODE 2: EDIT PHP.INI MANUAL (JIKA METODE 1 TIDAK ADA)     ║
+╚═══════════════════════════════════════════════════════════════╝
+
+STEP 1: BUKA PHP.INI
+----------------------
+Cara A (Via Laragon):
+1. Klik kanan icon Laragon
+2. Pilih: PHP > php.ini
+3. File akan terbuka di text editor
+
+Cara B (Manual):
+1. Buka folder: C:\laragon\bin\php\
+2. Cari folder versi PHP yang aktif (misal: php-8.3.32)
+3. Buka file: php.ini
+
+STEP 2: EDIT PHP.INI
+----------------------
+1. Setelah file php.ini terbuka
+2. Tekan Ctrl + F (Find/Cari)
+3. Ketik: "extension=pdo_mysql"
+4. Akan ketemu baris seperti ini:
+
+   ;extension=pdo_mysql
+
+5. HAPUS tanda titik koma (;) di depannya menjadi:
+
+   extension=pdo_mysql
+
+6. Cari lagi (Ctrl + F): "extension=mysqli"
+7. Akan ketemu baris:
+
+   ;extension=mysqli
+
+8. HAPUS tanda titik koma (;) di depannya menjadi:
+
+   extension=mysqli
+
+9. SAVE file (Ctrl + S)
+
+STEP 3: RESTART LARAGON
+-------------------------
+1. Klik kanan icon Laragon
+2. Klik: Stop All
+3. Tunggu sampai semua service stop (5-10 detik)
+4. Klik: Start All
+5. Tunggu sampai Apache & MySQL running (hijau)
+
+STEP 4: VERIFIKASI
+-------------------
+Buka CMD dan ketik:
+
+   php -m | findstr pdo_mysql
+
+Jika muncul output: "pdo_mysql"
+Berarti BERHASIL! ✅
+
+Jika tidak ada output, ulangi dari STEP 1
+
+STEP 5: COBA LAGI MIGRATION
+-----------------------------
+   cd E:\app\Coding\laragon\www\pembelajaran-hindu
+   php artisan migrate:fresh --seed
+
+═══════════════════════════════════════════════════════════════
+
+╔═══════════════════════════════════════════════════════════════╗
+║  METODE 3: CEK VERSI PHP YANG DIGUNAKAN                      ║
+╚═══════════════════════════════════════════════════════════════╝
+
+Kadang Laragon punya multiple PHP versions. Pastikan edit php.ini
+yang benar!
+
+1. Buka CMD
+2. Ketik: php -v
+3. Lihat versi PHP yang aktif (misal: PHP 8.3.32)
+4. Buka folder: C:\laragon\bin\php\php-8.3.32\php.ini
+5. Edit file php.ini di folder versi yang AKTIF
+6. Enable extension seperti di METODE 2
+
+═══════════════════════════════════════════════════════════════
+
+╔═══════════════════════════════════════════════════════════════╗
+║  CHECKLIST SEBELUM MIGRATION                                  ║
+╚═══════════════════════════════════════════════════════════════╝
+
+Sebelum menjalankan php artisan migrate, pastikan:
+
+☐ Extension pdo_mysql sudah enabled di php.ini
+☐ Extension mysqli sudah enabled di php.ini
+☐ php.ini sudah di-SAVE
+☐ Laragon sudah di-RESTART (Stop All > Start All)
+☐ Apache & MySQL status HIJAU/Running
+☐ Database "pembelajaran_hindu" sudah dibuat
+☐ File .env sudah benar (DB_DATABASE=pembelajaran_hindu)
+
+Jika semua sudah ✅, baru jalankan:
+
+   php artisan migrate:fresh --seed
+
+═══════════════════════════════════════════════════════════════
+
+╔═══════════════════════════════════════════════════════════════╗
+║  JIKA MASIH ERROR LAIN                                        ║
+╚═══════════════════════════════════════════════════════════════╝
+
+ERROR: "Access denied for user 'root'"
+SOLUSI:
+   1. Buka .env
+   2. Cek baris DB_PASSWORD=
+   3. Jika MySQL ada password, isi: DB_PASSWORD=yourpassword
+   4. Jika tidak ada password, biarkan kosong: DB_PASSWORD=
+
+ERROR: "Unknown database 'pembelajaran_hindu'"
+SOLUSI:
+   1. Buka HeidiSQL atau phpMyAdmin
+   2. Buat database baru: pembelajaran_hindu
+   3. Atau via MySQL command:
+      CREATE DATABASE pembelajaran_hindu;
+
+ERROR: "SQLSTATE[HY000] [2002] No connection"
+SOLUSI:
+   1. Pastikan MySQL di Laragon sudah running (hijau)
+   2. Klik kanan Laragon > MySQL > Start
+   3. Tunggu sampai hijau
+
+═══════════════════════════════════════════════════════════════
+
+🎯 RINGKASAN CEPAT:
+
+1. Enable extension pdo_mysql di php.ini (hapus tanda ;)
+2. Enable extension mysqli di php.ini (hapus tanda ;)
+3. Save php.ini
+4. Restart Laragon (Stop All > Start All)
+5. Buat database: pembelajaran_hindu
+6. Run: php artisan migrate:fresh --seed
+
+═══════════════════════════════════════════════════════════════
+
+💡 TIPS TAMBAHAN:
+
+• Setelah edit php.ini, WAJIB restart Laragon
+• Jangan edit php.ini saat Laragon running
+• Pastikan edit php.ini yang benar (sesuai versi aktif)
+• Database harus dibuat dulu sebelum migration
+• Cek MySQL sudah running (ikon hijau di Laragon)
+
+═══════════════════════════════════════════════════════════════
+
+📞 BUTUH BANTUAN LEBIH?
+
+Jika masih error setelah ikuti semua step:
+1. Screenshot error yang muncul
+2. Cek versi PHP: php -v
+3. Cek extension loaded: php -m
+4. Cek status MySQL di Laragon
+
+═══════════════════════════════════════════════════════════════
+
+✅ SETELAH BERHASIL:
+
+Anda akan melihat output seperti ini:
+
+   INFO Preparing database.
+   Creating migration table .. DONE
+   INFO Running migrations.
+   0001_01_01_000000_create_users_table .. DONE
+   0001_01_01_000001_create_cache_table .. DONE
+   ... (dll)
+
+   INFO Seeding database.
+
+BERARTI SUKSES! 🎉
+
+Aplikasi siap digunakan!
+
+═══════════════════════════════════════════════════════════════

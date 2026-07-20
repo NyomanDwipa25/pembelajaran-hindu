@@ -1,0 +1,300 @@
+╔══════════════════════════════════════════════════════════════════╗
+║                                                                  ║
+║   🔧 PANDUAN VISUAL: FIX "COULD NOT FIND DRIVER" ERROR 🔧       ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
+
+ERROR ANDA:
+-----------
+❌ "could not find driver (Connection: mysql...)"
+
+ARTINYA:
+--------
+PHP tidak bisa connect ke MySQL karena extension belum aktif.
+
+══════════════════════════════════════════════════════════════════
+
+📍 LOKASI FILE YANG HARUS DIEDIT:
+----------------------------------
+
+Windows File Path:
+C:\laragon\bin\php\php-8.3.32\php.ini
+(Ganti "php-8.3.32" dengan versi PHP Anda)
+
+══════════════════════════════════════════════════════════════════
+
+🎯 CARA TERMUDAH (PILIH SALAH SATU):
+
+┌──────────────────────────────────────────────────────────────┐
+│  CARA 1: VIA LARAGON GUI (PALING MUDAH) ⭐                   │
+└──────────────────────────────────────────────────────────────┘
+
+1. Klik kanan icon Laragon (pojok kanan bawah taskbar)
+   
+   ┌─────────────┐
+   │  [Laragon]  │ ← Klik kanan ini
+   └─────────────┘
+
+2. Menu muncul:
+   
+   ┌──────────────────┐
+   │ Start All        │
+   │ Stop All         │
+   │ ► Apache         │
+   │ ► MySQL          │
+   │ ► PHP         ◄──┼── Hover di sini
+   │ ► Terminal       │
+   └──────────────────┘
+
+3. Hover ke "PHP" → Pilih "php.ini"
+   
+   File php.ini akan terbuka di Notepad
+
+4. Tekan Ctrl + F (Find)
+5. Ketik: extension=pdo_mysql
+6. Cari baris yang ada tanda ; (titik koma) di depan:
+   
+   SEBELUM:
+   ;extension=pdo_mysql  ← Ada tanda ;
+   
+   SESUDAH:
+   extension=pdo_mysql   ← Hapus tanda ;
+
+7. Cari lagi (Ctrl + F): extension=mysqli
+8. Hapus tanda ; juga:
+   
+   SEBELUM:
+   ;extension=mysqli
+   
+   SESUDAH:
+   extension=mysqli
+
+9. SAVE (Ctrl + S)
+10. Tutup Notepad
+
+11. Klik kanan Laragon lagi:
+    - Klik "Stop All" → Tunggu 5 detik
+    - Klik "Start All" → Tunggu sampai hijau
+
+12. SELESAI! ✅
+
+══════════════════════════════════════════════════════════════════
+
+┌──────────────────────────────────────────────────────────────┐
+│  CARA 2: MANUAL EDIT PHP.INI                                 │
+└──────────────────────────────────────────────────────────────┘
+
+STEP 1: Buka File Explorer
+---------------------------
+1. Tekan Windows + E
+2. Paste path ini ke address bar:
+   
+   C:\laragon\bin\php\
+
+3. Masuk ke folder versi PHP yang aktif
+   (misal: php-8.3.32)
+
+4. Cari file: php.ini
+5. Klik kanan > Open with > Notepad
+
+STEP 2: Edit File
+------------------
+1. Tekan Ctrl + F
+2. Ketik: extension=pdo
+3. Cari baris ini:
+
+   ┌─────────────────────────────┐
+   │ ;extension=pdo_mysql        │ ← ADA TITIK KOMA
+   └─────────────────────────────┘
+
+4. Hapus tanda ; di depan, jadi:
+
+   ┌─────────────────────────────┐
+   │ extension=pdo_mysql         │ ← TANPA TITIK KOMA
+   └─────────────────────────────┘
+
+5. Cari lagi: extension=mysqli
+6. Ubah dari:
+
+   ;extension=mysqli
+
+   Menjadi:
+
+   extension=mysqli
+
+STEP 3: Save & Restart
+-----------------------
+1. Save file (Ctrl + S)
+2. Tutup Notepad
+3. Klik kanan Laragon
+4. Stop All (tunggu 5 detik)
+5. Start All (tunggu sampai hijau)
+
+══════════════════════════════════════════════════════════════════
+
+✅ VERIFIKASI (CEK SUDAH BENAR ATAU BELUM):
+
+Buka CMD/Terminal:
+
+┌──────────────────────────────────────────────────────────────┐
+│ C:\> php -m | findstr pdo_mysql                              │
+│                                                              │
+│ Output yang diharapkan:                                      │
+│ pdo_mysql                                                    │
+└──────────────────────────────────────────────────────────────┘
+
+Jika muncul "pdo_mysql" → BERHASIL! ✅
+Jika kosong → Extension belum aktif, ulangi step di atas
+
+══════════════════════════════════════════════════════════════════
+
+🗄️ BUAT DATABASE (JIKA BELUM):
+
+┌──────────────────────────────────────────────────────────────┐
+│  CARA 1: VIA HEIDI SQL (GUI)                                │
+└──────────────────────────────────────────────────────────────┘
+
+1. Klik kanan Laragon > MySQL > HeidiSQL
+2. Klik kanan di sidebar > Create new > Database
+3. Name: pembelajaran_hindu
+4. Collation: utf8mb4_unicode_ci
+5. OK
+
+┌──────────────────────────────────────────────────────────────┐
+│  CARA 2: VIA COMMAND LINE                                    │
+└──────────────────────────────────────────────────────────────┘
+
+Buka CMD dan ketik:
+
+mysql -u root -e "CREATE DATABASE pembelajaran_hindu CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+
+══════════════════════════════════════════════════════════════════
+
+🚀 JALANKAN MIGRATION (SETELAH SEMUA FIX):
+
+Buka CMD/Terminal:
+
+┌──────────────────────────────────────────────────────────────┐
+│ C:\> cd E:\app\Coding\laragon\www\pembelajaran-hindu        │
+│                                                              │
+│ C:\...\pembelajaran-hindu> php artisan migrate:fresh --seed │
+│                                                              │
+│ ⏳ Tunggu proses... (10-30 detik)                           │
+└──────────────────────────────────────────────────────────────┘
+
+══════════════════════════════════════════════════════════════════
+
+✅ OUTPUT YANG BENAR (JIKA BERHASIL):
+
+┌──────────────────────────────────────────────────────────────┐
+│  INFO Preparing database.                                    │
+│                                                              │
+│  Creating migration table ................. 20.32ms DONE    │
+│                                                              │
+│  INFO Running migrations.                                    │
+│                                                              │
+│  2026_07_19_210056_add_role_to_users_table . 15.12ms DONE   │
+│  2026_07_19_210057_create_lessons_table .... 18.45ms DONE   │
+│  2026_07_19_210058_create_assignments_table  22.10ms DONE   │
+│  2026_07_19_210059_create_attendances_table  19.87ms DONE   │
+│  2026_07_19_210100_create_assignment_subm... 25.34ms DONE   │
+│                                                              │
+│  INFO Seeding database.                                      │
+│                                                              │
+│ ✅ Database seeded successfully!                            │
+└──────────────────────────────────────────────────────────────┘
+
+JIKA MUNCUL OUTPUT INI → SUKSES! 🎉
+
+══════════════════════════════════════════════════════════════════
+
+🎯 CHECKLIST SEBELUM MIGRATION:
+
+☐ 1. Extension pdo_mysql sudah enabled (tanpa tanda ;)
+☐ 2. Extension mysqli sudah enabled (tanpa tanda ;)
+☐ 3. File php.ini sudah di-SAVE
+☐ 4. Laragon sudah di-RESTART
+☐ 5. MySQL di Laragon running (ikon hijau)
+☐ 6. Database "pembelajaran_hindu" sudah dibuat
+☐ 7. File .env benar (cek DB_DATABASE=pembelajaran_hindu)
+
+Jika SEMUA ✅ → Jalankan migration
+
+══════════════════════════════════════════════════════════════════
+
+❌ ERROR LAIN YANG MUNGKIN MUNCUL:
+
+┌──────────────────────────────────────────────────────────────┐
+│ ERROR: "Access denied for user 'root'@'localhost'"          │
+├──────────────────────────────────────────────────────────────┤
+│ SOLUSI:                                                      │
+│ 1. Buka file .env                                            │
+│ 2. Cari baris: DB_PASSWORD=                                  │
+│ 3. Jika MySQL ada password, isi: DB_PASSWORD=yourpassword   │
+│ 4. Jika tidak ada password, kosongkan: DB_PASSWORD=         │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│ ERROR: "Unknown database 'pembelajaran_hindu'"               │
+├──────────────────────────────────────────────────────────────┤
+│ SOLUSI:                                                      │
+│ Database belum dibuat! Buat dulu database-nya                │
+│ Lihat section "BUAT DATABASE" di atas                       │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│ ERROR: "SQLSTATE[HY000] [2002] No connection"               │
+├──────────────────────────────────────────────────────────────┤
+│ SOLUSI:                                                      │
+│ MySQL belum running!                                         │
+│ 1. Klik kanan Laragon > MySQL > Start                       │
+│ 2. Tunggu sampai ikon MySQL hijau                           │
+└──────────────────────────────────────────────────────────────┘
+
+══════════════════════════════════════════════════════════════════
+
+🎉 SETELAH MIGRATION BERHASIL:
+
+Jalankan aplikasi:
+
+php artisan serve
+
+Buka browser:
+http://localhost:8000
+
+Login dengan:
+- Email: guru@hindu.com
+- Password: password
+
+ATAU
+
+- Email: ayu@siswa.com
+- Password: password
+
+══════════════════════════════════════════════════════════════════
+
+💡 TIPS PENTING:
+
+1. Setiap kali edit php.ini, WAJIB restart Laragon
+2. Pastikan MySQL running (ikon hijau)
+3. Database harus dibuat SEBELUM migration
+4. Cek .env file (DB_DATABASE, DB_USERNAME, DB_PASSWORD)
+5. Gunakan CMD/Terminal dengan hak Administrator jika perlu
+
+══════════════════════════════════════════════════════════════════
+
+📞 MASIH GAGAL?
+
+Pastikan:
+✓ Versi PHP: 8.3 atau lebih tinggi
+✓ Laragon versi terbaru
+✓ Edit php.ini yang BENAR (sesuai versi aktif)
+✓ Restart Laragon setelah edit
+✓ MySQL service running
+
+══════════════════════════════════════════════════════════════════
+
+Semoga berhasil! 🙏
+Om Swastiastu 🕉️
+
+══════════════════════════════════════════════════════════════════
